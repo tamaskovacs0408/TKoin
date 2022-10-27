@@ -14,6 +14,7 @@ class Block:
         text = ''
         for row in self.__dict__.items():
           tex += str(row[0]) + ':' + str(row[1]) + '\n'
+        return text
 
     def make_hash(self):
         return sha256((str(self.time) + str(self.data) + str(self.pre_hash) + str(self.nonce)).encode()).hexdigest()
