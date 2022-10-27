@@ -1,11 +1,17 @@
 from hashlib import sha256
 from datetime import datetime
+
+
 class Block:
-  def __init__(self, data, time=datetime.today(), pre_hash='0'*64):
-    self.data = data
-    self.time = time
-    self.pre_hash = pre_hash
-    
+    def __init__(self, data, time=datetime.today(), pre_hash='0'*64):
+        self.data = data
+        self.time = time
+        self.pre_hash = pre_hash
+        self.nonce = 0
+        self.hash = self.make_hash()
+
+    def make_hash(self):
+        return sha256((str(self.time) + str(self.data) + str(self.pre_hash) + str(self.nonce)).encode()).hexdigest()
 
 
 tkoin = Blockchain()
