@@ -8,5 +8,5 @@ from hashlib import sha256
 sha256('Tamas'.encode()).hexdigest() # '0df0334ebb59feea7b36ef94147306f80916c96f604c99bcedd41a96ac348c4d'
 ```
 
-The `Block` class's constructor have the `data` argument (`{'from': 'user1', 'to': 'user2', 'amount': 8}`), the `time` what will be today (`datetime.today()`),for the first block we defined a `pre_hash` argument to have an id. (The hashes of the following blocks will be generated with the previous block's hash.)
+The `Block` class's constructor have the `data` argument (`{'from': 'user1', 'to': 'user2', 'amount': 8}`), the `time` what will be today (`datetime.today()`),for the first block we defined a `pre_hash` argument to have an id. (The next block's `pre_hash` will be the current block's hash)
 The `nonce` is used for the `mining` and the `hash` is the id which is made by the `make_hash` function.
