@@ -20,3 +20,5 @@ The `__str__` methods in both classes is for to print the data.
 # Tkoin V2 (upgraded version)
 
 In the *v2* we creates the `Transaction` class. It handles the `sender`, `reciever` and the `amount`.
+
+The `Blockchain` class get a `new_transaction` method, a `reward` argument (this is the reward for the mining) and a `transaction_list`, because (opposite to the v1 blockchain, where only 1 transaction was on each block) we collect the transactions into this list until we decide to create a block (So in the v2 more transactions will be in a block).
