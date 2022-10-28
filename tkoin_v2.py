@@ -56,6 +56,15 @@ class Blockchain:
         return 'VALIDATED'
 
 
+class Transaction:
+    def __init__(self, sender, reciever, amount):
+        self.sender = sender
+        self.reciever = reciever
+        self.amount = amount
+        
+    
+
+
 tkoin = Blockchain()
 
 tkoin.new_block(Block({'from': 'user1', 'to': 'user2', 'amount': 8}))
@@ -63,10 +72,3 @@ tkoin.new_block(Block({'from': 'user2', 'to': 'user3', 'amount': 12}))
 tkoin.new_block(Block({'from': 'user3', 'to': 'user1', 'amount': 4}))
 
 print(tkoin)  # Prints the tkoin blockchain
-print('Blockchain validation:', tkoin.is_valid())  # Validation OK
-
-# tkoin.chain[2].data['amount'] = 34 # Change the amount
-# print('Blockchain validation:', tkoin.is_valid()) # Own hash conflict
-
-# tkoin.chain[2].hash = tkoin.chain[2].make_hash() # Generates hash to the 3rd block
-# print('Blockchain validation:', tkoin.is_valid()) # Previous hash conflict
