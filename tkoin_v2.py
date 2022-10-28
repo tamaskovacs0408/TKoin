@@ -62,13 +62,18 @@ class Transaction:
         self.reciever = reciever
         self.amount = amount
         
-    
+    def __str__(self):
+        text = ''
+        for row in self.__dict__.items():
+            text += str(row[0]) + ':' + str(row[1]) + '\n'
+        return text
 
 
 tkoin = Blockchain()
+print('----- GENESIS BLOCK -----')
+print(tkoin)
 
-tkoin.new_block(Block({'from': 'user1', 'to': 'user2', 'amount': 8}))
-tkoin.new_block(Block({'from': 'user2', 'to': 'user3', 'amount': 12}))
-tkoin.new_block(Block({'from': 'user3', 'to': 'user1', 'amount': 4}))
+tkoin.new_transaction(Transaction({'user1', 'user2', 8}))
+tkoin.new_transaction(Transaction({'user2', 'user3', 12}))
+tkoin.new_transaction(Transaction({'user3', 'user1', 4}))
 
-print(tkoin)  # Prints the tkoin blockchain
