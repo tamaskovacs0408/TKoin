@@ -45,6 +45,11 @@ class Blockchain:
         block.pre_hash = self.chain[-1].hash
         block.mine(self.difficulty)
         self.chain.append(block)
+        
+    def is_valid(self):
+        for block in range(len(self.chain)-1):
+            if self.chain[block].hash != self.chain[block + 1].pre_hash:
+                return 'Previous hash conflict detected in ' + str(block + 1) + '. block!'
 
 
 tkoin = Blockchain()
@@ -53,4 +58,4 @@ tkoin.new_block(Block({'from': 'user1', 'to': 'user2', 'amount': 8}))
 tkoin.new_block(Block({'from': 'user2', 'to': 'user3', 'amount': 12}))
 tkoin.new_block(Block({'from': 'user3', 'to': 'user1', 'amount': 4}))
 
-print(tkoin) # Prints the tkoin blocks
+print(tkoin) # Prints the tkoin blockchain
