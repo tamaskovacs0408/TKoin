@@ -32,6 +32,8 @@ class Blockchain:
     def __init__(self):
         self.chain = [self.genesis_block()]
         self.difficulty = 4
+        self.reward = 5
+        self.transaction_list = []
 
     def __str__(self):
         text = ''
@@ -41,6 +43,9 @@ class Blockchain:
 
     def genesis_block(self):
         return Block('Genesis Block')
+
+    def new_transaction(self, transaction):
+        self.transaction_list.append(transaction)
 
     def new_block(self, block):
         block.pre_hash = self.chain[-1].hash
@@ -61,7 +66,7 @@ class Transaction:
         self.sender = sender
         self.reciever = reciever
         self.amount = amount
-        
+
     def __str__(self):
         text = ''
         for row in self.__dict__.items():
@@ -73,7 +78,6 @@ tkoin = Blockchain()
 print('----- GENESIS BLOCK -----')
 print(tkoin)
 
-tkoin.new_transaction(Transaction({'user1', 'user2', 8}))
-tkoin.new_transaction(Transaction({'user2', 'user3', 12}))
-tkoin.new_transaction(Transaction({'user3', 'user1', 4}))
-
+tkoin.new_transaction(Transaction({'user1', 'user2', 20}))
+tkoin.new_transaction(Transaction({'user2', 'user3', 45}))
+tkoin.new_transaction(Transaction({'user3', 'user1', 30}))
