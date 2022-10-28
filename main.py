@@ -50,6 +50,9 @@ class Blockchain:
         for block in range(len(self.chain)-1):
             if self.chain[block].hash != self.chain[block + 1].pre_hash:
                 return 'Previous hash conflict detected in ' + str(block + 1) + '. block!'
+            if self.chain[block].hash != self.chain[block].make_hash():
+                return 'Own hash conflict detected in ' + str(block + 1) + '. block!'
+        return 'Valid block'
 
 
 tkoin = Blockchain()
