@@ -23,7 +23,7 @@ class Block:
         return text
 
     def make_hash(self):
-        return sha256((str(self.time) + str(self.data) + str(self.pre_hash) + str(self.nonce)).encode()).hexdigest()
+        return sha256((str(self.time) + ''.join(str(transaction) for transaction in self.data) + str(self.pre_hash) + str(self.nonce)).encode()).hexdigest()
 
     def mine(self, difficulty):
         print('Start mining:', self.data)
