@@ -53,6 +53,8 @@ class Blockchain:
     def mine_transactions(self, miner):
         block = Block(self.transaction_list, pre_hash=self.chain[-1].hash)
         block.mine(self.difficulty)
+        self.chain.append(block)
+        self.transaction_list = [Transaction('Tkoin', miner, self.reward)]
 
     def new_transaction(self, transaction):
         self.transaction_list.append(transaction)
