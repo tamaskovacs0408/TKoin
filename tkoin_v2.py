@@ -66,6 +66,16 @@ class Blockchain:
             if self.chain[block].hash != self.chain[block].make_hash():
                 return 'Own hash conflict detected in ' + str(block + 1) + '. block!'
         return 'VALIDATED'
+    
+    def get_balance(self, person):
+        balance = 0
+        for block in self.chain:
+            for transaction in block.data:
+                if transaction.reciever == person:
+                    balance += transaction.amount
+                if transaction.sender == person:
+                    balance -= transaction.amount
+        return balance
 
 
 class Transaction:
@@ -89,12 +99,40 @@ tkoin.new_transaction(Transaction('user1', 'user2', 20))
 tkoin.new_transaction(Transaction('user2', 'user3', 45))
 tkoin.new_transaction(Transaction('user3', 'user1', 30))
 
-print('----- TRANSACTIONS -----')
+print('----- TRANSACTIONS 1-----')
 for item in tkoin.transaction_list:
     print(item)
 
 print('----- MINING -----')
-tkoin.mine_transactions('random_miner')
+tkoin.mine_transactions('user2')
 
 print('----- BLOCKS -----')
 print(tkoin)
+
+print('----- MINING REWARD -----')
+for item in tkoin.transaction_list:
+    print(item)
+    
+print('----- BALANCE -----')
+print('user1:', tkoin.get_balance('user1'))
+print('user2:', tkoin.get_balance('user2'))
+print('user3:', tkoin.get_balance('user3'))
+
+print('----- TRANSACTIONS 2-----')
+for item in tkoin.transaction_list:
+    print(item)
+
+print('----- MINING -----')
+tkoin.mine_transactions('user2')
+
+print('----- BLOCKS -----')
+print(tkoin)
+
+print('----- MINING REWARD -----')
+for item in tkoin.transaction_list:
+    print(item)
+
+print('----- BALANCE -----')
+print('user1:', tkoin.get_balance('user1'))
+print('user2:', tkoin.get_balance('user2'))
+print('user3:', tkoin.get_balance('user3'))
