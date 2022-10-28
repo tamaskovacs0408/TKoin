@@ -10,3 +10,6 @@ sha256('Tamas'.encode()).hexdigest() # '0df0334ebb59feea7b36ef94147306f80916c96f
 
 The `Block` class's constructor have the `data` argument (`{'from': 'user1', 'to': 'user2', 'amount': 8}`), the `time` what will be today (`datetime.today()`),for the first block we defined a `pre_hash` argument to have an id. (The next block's `pre_hash` will be the current block's hash)
 The `nonce` is used for the `mining` and the `hash` is the id which is made by the `make_hash` function.
+
+
+The `Blockchain` class has the `Block`s we create. It has the `genesis_block()` method to create the first block, and the `new_block()` method that creates new blocks to the blockchain. It has a `pre_hash`, that's the previous block's hash (`self.chain[-1].hash`).  
