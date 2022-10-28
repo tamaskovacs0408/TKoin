@@ -94,3 +94,7 @@ for item in tkoin.transaction_list:
     print(item)
 
 print('----- MINING -----')
+tkoin.mine_transactions('random_miner')
+
+print('----- BLOCKS -----')
+print(tkoin)
