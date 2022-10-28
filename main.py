@@ -9,11 +9,11 @@ class Block:
         self.pre_hash = pre_hash
         self.nonce = 0
         self.hash = self.make_hash()
-        
+
     def __str__(self):
         text = ''
         for row in self.__dict__.items():
-          tex += str(row[0]) + ':' + str(row[1]) + '\n'
+            text += str(row[0]) + ':' + str(row[1]) + '\n'
         return text
 
     def make_hash(self):
@@ -26,6 +26,17 @@ class Block:
             self.hash = self.make_hash()
         print('Experiment:', self.nonce)
         print('Mined:', self.hash, '\n')
+        
+class Blockchain:
+    def __init__(self):
+        self.chain = [self.genesis_block()]
+        self.difficulty = 4
+        
+    def __str__(self):
+        text = ''
+        for block in self.chain:
+            text += '\n' + str(block)
+        return text
 
 
 tkoin = Blockchain()
