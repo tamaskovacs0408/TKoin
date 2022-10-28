@@ -12,4 +12,4 @@ The `Block` class's constructor have the `data` argument (`{'from': 'user1', 'to
 The `nonce` is used for the `mining` and the `hash` is the id which is made by the `make_hash` function.
 
 
-The `Blockchain` class has the `Block`s we create. It has the `genesis_block()` method to create the first block, and the `new_block()` method that creates new blocks to the blockchain. It has a `pre_hash`, that's the previous block's hash (`self.chain[-1].hash`).  
+The `Blockchain` class has the `Block`s we create. It has the `genesis_block()` method to create the first block, and the `new_block()` method that creates new blocks to the blockchain. It has a `pre_hash`, that's the previous block's hash (`self.chain[-1].hash`).  The `block.mine(difficulty)` set the blockchain's mining difficulty and we append the `block` to the `chain` with the `self.chain.append(block)`.
