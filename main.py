@@ -52,7 +52,7 @@ class Blockchain:
                 return 'Previous hash conflict detected in ' + str(block + 1) + '. block!'
             if self.chain[block].hash != self.chain[block].make_hash():
                 return 'Own hash conflict detected in ' + str(block + 1) + '. block!'
-        return 'Valid block'
+        return 'VALIDATED'
 
 
 tkoin = Blockchain()
@@ -62,3 +62,10 @@ tkoin.new_block(Block({'from': 'user2', 'to': 'user3', 'amount': 12}))
 tkoin.new_block(Block({'from': 'user3', 'to': 'user1', 'amount': 4}))
 
 print(tkoin) # Prints the tkoin blockchain
+print('Blockchain validation:', tkoin.is_valid()) # Validation OK
+
+# tkoin.chain[2].data['amount'] = 34 # Change the amount
+# print('Blockchain validation:', tkoin.is_valid()) # Own hash conflict
+
+# tkoin.chain[2].hash = tkoin.chain[2].make_hash() # Generates hash to the 3rd block
+# print('Blockchain validation:', tkoin.is_valid()) # Previous hash conflict
