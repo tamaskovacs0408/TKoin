@@ -48,7 +48,7 @@ class Blockchain:
         return text
 
     def genesis_block(self):
-        return Block('Genesis Block')
+        return Block([Transaction('def_user', 'def_user', 0)])
 
     def new_transaction(self, transaction):
         self.transaction_list.append(transaction)
