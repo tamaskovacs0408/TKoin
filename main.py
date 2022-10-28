@@ -37,6 +37,14 @@ class Blockchain:
         for block in self.chain:
             text += '\n' + str(block)
         return text
+    
+    def genesis_block():
+        return Block('Genesis Block')
+    
+    def new_block(self, block):
+        block.pre_hash = self.chain[-1].hash
+        block.mine(self.difficulty)
+        self.chain.append(block)
 
 
 tkoin = Blockchain()
