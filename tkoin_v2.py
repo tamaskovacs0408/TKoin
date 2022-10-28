@@ -26,7 +26,7 @@ class Block:
         return sha256((str(self.time) + ''.join(str(transaction) for transaction in self.data) + str(self.pre_hash) + str(self.nonce)).encode()).hexdigest()
 
     def mine(self, difficulty):
-        print('Start mining:', self.data)
+        print('Start mining')
         while self.hash[:difficulty] != '0' * difficulty:
             self.nonce += 1
             self.hash = self.make_hash()
