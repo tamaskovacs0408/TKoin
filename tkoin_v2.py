@@ -13,7 +13,13 @@ class Block:
     def __str__(self):
         text = ''
         for row in self.__dict__.items():
-            text += str(row[0]) + ':' + str(row[1]) + '\n'
+            if type(row[1]) == list:
+                for transaction in row[1]:
+                    text += transaction.sender + '-' + transaction.reciever + \
+                        '-' + str(transaction.amount) + ' '
+                text += '\n'
+            else:
+                text += str(row[0]) + ':' + str(row[1]) + '\n'
         return text
 
     def make_hash(self):
@@ -70,7 +76,7 @@ class Transaction:
     def __str__(self):
         text = ''
         for row in self.__dict__.items():
-            text += str(row[0]) + ':' + str(row[1]) + '\n'
+            text += str(row[0]) + ': ' + str(row[1]) + '\n'
         return text
 
 
@@ -81,3 +87,9 @@ print(tkoin)
 tkoin.new_transaction(Transaction('user1', 'user2', 20))
 tkoin.new_transaction(Transaction('user2', 'user3', 45))
 tkoin.new_transaction(Transaction('user3', 'user1', 30))
+
+print('----- TRANSACTIONS -----')
+for item in tkoin.transaction_list:
+    print(item)
+
+print('----- MINING -----')
