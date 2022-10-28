@@ -38,7 +38,7 @@ class Blockchain:
             text += '\n' + str(block)
         return text
     
-    def genesis_block():
+    def genesis_block(self):
         return Block('Genesis Block')
     
     def new_block(self, block):
@@ -53,4 +53,4 @@ tkoin.new_block(Block({'from': 'user1', 'to': 'user2', 'amount': 8}))
 tkoin.new_block(Block({'from': 'user2', 'to': 'user3', 'amount': 12}))
 tkoin.new_block(Block({'from': 'user3', 'to': 'user1', 'amount': 4}))
 
-# print(tkoin) # Prints the tkoin blocks
+print(tkoin) # Prints the tkoin blocks
