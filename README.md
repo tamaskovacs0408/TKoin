@@ -1,4 +1,4 @@
-# TKoin
+# TKoin v1
 
 `from datetime import datetime`
 `from hashlib import sha256`
@@ -17,8 +17,10 @@ The `is_valid` method validates the blockchain. It steps through the `chain` wit
 
 The `__str__` methods in both classes is for to print the data.
 
-# Tkoin V2 (upgraded version)
+## V2 (upgraded version)
 
 In the *v2* we creates the `Transaction` class. It handles the `sender`, `reciever` and the `amount`.
 
-The `Blockchain` class get a `new_transaction` method, a `reward` argument (this is the reward for the mining) and a `transaction_list`, because (opposite to the v1 blockchain, where only 1 transaction was on each block) we collect the transactions into this list until we decide to create a block (So in the v2 more transactions will be in a block).
+The `Blockchain` class get a `new_transaction` method, a `reward` argument (this is the reward for the mining) and a `transaction_list`, because (opposite to the v1 blockchain, where only 1 transaction was on each block) we collect the transactions into this list until we decide to create a block (So in the v2 more transactions will be in a block). The `new_block` method has been deleted, and we created a `mine_transactions` method instead. Finally we create a `get_balance` method to check the users balance.
+
+In the `Block` class the `make_hash` method has been modified to handle the `transaction`.
