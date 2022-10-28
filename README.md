@@ -13,3 +13,4 @@ The `nonce` is used for the `mining` and the `hash` is the id which is made by t
 
 
 The `Blockchain` class has the `Block`s we create. It has the `genesis_block()` method to create the first block, and the `new_block()` method that creates new blocks to the blockchain. It has a `pre_hash`, that's the previous block's hash (`self.chain[-1].hash`).  The `block.mine(difficulty)` set the blockchain's mining difficulty and we append the `block` to the `chain` with the `self.chain.append(block)`.
+The `is_valid` method validates the blockchain. It steps through the `chain` with a `for loop` (except the last element) and checks if the current block's `hash` equals to the next block's `pre_hash`. If there's a conflict, it returns a warning message.
