@@ -49,14 +49,13 @@ class Blockchain:
 
     def genesis_block(self):
         return Block([Transaction('def_user', 'def_user', 0)])
+    
+    def mine_transactions(self, miner):
+        block = Block(self.transaction_list, pre_hash=self.chain[-1].hash)
+        block.mine(self.difficulty)
 
     def new_transaction(self, transaction):
         self.transaction_list.append(transaction)
-
-    def new_block(self, block):
-        block.pre_hash = self.chain[-1].hash
-        block.mine(self.difficulty)
-        self.chain.append(block)
 
     def is_valid(self):
         for block in range(len(self.chain)-1):
