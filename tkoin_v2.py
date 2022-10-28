@@ -38,7 +38,7 @@ class Blockchain:
     def __str__(self):
         text = ''
         for block in self.chain:
-            text += '\n' + str(block)
+            text += str(block) + '\n'
         return text
 
     def genesis_block(self):
@@ -78,6 +78,6 @@ tkoin = Blockchain()
 print('----- GENESIS BLOCK -----')
 print(tkoin)
 
-tkoin.new_transaction(Transaction({'user1', 'user2', 20}))
-tkoin.new_transaction(Transaction({'user2', 'user3', 45}))
-tkoin.new_transaction(Transaction({'user3', 'user1', 30}))
+tkoin.new_transaction(Transaction('user1', 'user2', 20))
+tkoin.new_transaction(Transaction('user2', 'user3', 45))
+tkoin.new_transaction(Transaction('user3', 'user1', 30))
